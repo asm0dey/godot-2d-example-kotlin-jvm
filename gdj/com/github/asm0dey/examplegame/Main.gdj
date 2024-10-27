@@ -1,0 +1,28 @@
+// THIS FILE IS GENERATED! DO NOT EDIT OR DELETE IT. EDIT OR DELETE THE ASSOCIATED SOURCE CODE FILE INSTEAD
+// Note: You can however freely move this file inside your godot project if you want. Keep in mind however, that if you rename the originating source code file, this file will be deleted and regenerated as a new file instead of being updated! Other modifications to the source file however, will result in this file being updated.
+
+registeredName = Main
+fqName = com.github.asm0dey.examplegame.Main
+relativeSourcePath = src/main/kotlin/com/github/asm0dey/examplegame/Main.kt
+baseType = Node
+supertypes = [
+    godot.Node,
+	godot.Object,
+	godot.core.KtObject,
+	kotlin.Any
+]
+signals = [
+    
+]
+properties = [
+    mob_scene
+]
+functions = [
+    _ready,
+	_process,
+	game_over,
+	new_game,
+	on_mob_timer_timeout,
+	on_score_timer_timeout,
+	on_start_timer_timeout
+]

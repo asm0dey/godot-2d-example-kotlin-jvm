@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk8vk7wdxxy7u"]
+
+[ext_resource type="PackedScene" uid="uid://b24187kkj3ung" path="res://src/main/kotlin/com/github/asm0dey/examplegame/Player.tscn" id="1_6gme5"]
+[ext_resource type="Script" path="res://gdj/com/github/asm0dey/examplegame/Main.gdj" id="1_ta24o"]
+[ext_resource type="PackedScene" uid="uid://cqk0sha26kwom" path="res://src/main/kotlin/com/github/asm0dey/examplegame/HUD.tscn" id="4_qd1uq"]
+
+[sub_resource type="Curve2D" id="Curve2D_ub85e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ta24o")
+
+[node name="Player" parent="." instance=ExtResource("1_6gme5")]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ub85e")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+
+[node name="HUD" parent="." instance=ExtResource("4_qd1uq")]
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
